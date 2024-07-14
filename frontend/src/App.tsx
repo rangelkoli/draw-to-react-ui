@@ -10,6 +10,7 @@ import { blobToBase64 } from "file64";
 import axios from "axios";
 
 import Modal from "./components/Modal";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const [text, setText] = useState("");
@@ -17,13 +18,14 @@ function App() {
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   };
+  const history = useNavigate();
 
   const [componentText, setComponentText] = useState("");
   async function sendDatatoGemini(base64String: string) {
     // TODO Make these files available on the local file system
     // You may need to update the file paths
     const data = axios.post(
-      "http://127.0.0.1:5000/generate",
+      "http://127.0.0.1:5000/generate_text",
       {
         base64String,
         text,
@@ -37,6 +39,7 @@ function App() {
     console.log(data.then((res) => console.log(res)));
 
     setComponentText((await data).data);
+    history("/result", { state: { data: (await data).data } });
   }
 
   function ExportCanvasButton() {
@@ -78,7 +81,7 @@ function App() {
   return (
     <div>
       {componentText.length > 0 && (
-        <div className='z-50 absolute top-0 left-0 w-full bg-background px-4 py-3 shadow-lg flex flex-row gap-5 bg-black bg-opacity-50 overflow-x-hidden'>
+        <div className='z-50 absolute top-0 left-0 w-full bg-background px-4 py-3 shadow-lg flex flex-row gap-5 bg-black bg-opacity-50 '>
           <Modal
             isOpen={componentText.length > 0}
             onClose={() => {
@@ -88,6 +91,7 @@ function App() {
           />
         </div>
       )}
+
       <div
         style={{
           position: "fixed",

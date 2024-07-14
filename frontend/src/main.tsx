@@ -4,14 +4,16 @@ import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Result from "./pages/Result.tsx";
-
+import Res from "./pages/Res.tsx";
+import MyContext from "./utils/Context.ts";
+import LandingPage from "./pages/LandingPage.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <LandingPage />,
   },
   {
-    path: "/result",
+    path: "/:id",
     element: <Result />,
   },
 ]);

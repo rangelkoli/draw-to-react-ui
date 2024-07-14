@@ -1,11 +1,15 @@
-import React, { useState, useEffect, ReactElement, ElementType } from "react";
+import { useState, useEffect } from "react";
 
-const useDynamicComponent: React.FC<string> = (componentCode: string) => {
-  const [Component, setComponent] = useState<ElementType | null>(null);
+type DynamicComponentProps = Record<string, any>;
+
+const useDynamicComponent = (componentCode: string | null) => {
+  const [Component, setComponent] =
+    useState<React.FC<DynamicComponentProps> | null>(null);
 
   useEffect(() => {
     if (componentCode) {
       try {
+        // Create a module from the component code
         const ComponentModule = new Function(`return ${componentCode}`)();
         setComponent(() => ComponentModule.default);
       } catch (error) {
@@ -14,7 +18,7 @@ const useDynamicComponent: React.FC<string> = (componentCode: string) => {
     }
   }, [componentCode]);
 
-  return Component ? <Component /> : <div>Error: Component not found</div>;
+  return Component;
 };
 
 export default useDynamicComponent;

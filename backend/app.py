@@ -17,7 +17,7 @@ generation_config = {
   "response_mime_type": "text/plain",
 }
 model = genai.GenerativeModel(
-  model_name="gemini-1.5-pro",
+  model_name="gemini-1.5-flash",
   generation_config=generation_config,
   # safety_settings = Adjust safety settings
   # See https://ai.google.dev/gemini-api/docs/safety-settings
@@ -113,6 +113,51 @@ Just give me the code and nothing else. Do not give me ```javascript or ```jsx i
                                                  """)
         print(response.text)
         return response.text
+
+
+
+@app.route('/generate_text', methods=['POST'])
+def generate_text():
+
+    data = request.json
+    print(data['base64String'])
+    print(data['text'])
+    # chat_session = model.start_chat()
+    # response = chat_session.send_message(data['file'])
+    # print(response.text)
+    # return response.text
+    try:
+        base64_string = re.sub('^data:image/.+;base64,', '', data['base64String'])
+        imgdata = base64.b64decode(base64_string + '=' * (-len(base64_string) % 4))
+        # imgdata = base64.b64decode(data['base64String'] + '=' * (-len(data['base64String']) % 4))
+        filename = 'some_image.png'
+        with open(filename, 'wb') as f:
+            f.write(imgdata)
+        print("Image saved")
+
+    except binascii.Error as e:
+        print(f"Invalid base64-encoded string: {str(e)}")
+    prompt = """
+I want you to act as an expert tailwind developer. A user will provide you with a low-fidelity wireframe of an application and you will return a single html component that uses tailwind to create the website. I want the code to look the exact same as the image, ensuring all design elements are accurately reflected in the html code.
+Use any tailwind class that you need so that the code output matches the image including the positioning of all the components in the image. Make it beautiful and make it look good.
+Use creative license to make the application more fleshed out, if you need to insert an image, use placehold.co to create a placeholder image. If possible animate it and make it beautiful and make it look good.
+Just give me the code and nothing else. Do not give me ```javascript or ```jsx in the response. Just give me the html code.                                         
+                                             eg. 
+
+                                                        <div class="text-black">
+                                                            <h1>Hello World</h1>
+                                                        </div>
+
+                                             
+                                             DO NOT GIVE ME THE JAVASCRIPT or JSX TAGS
+    """
+    response = model.generate_content([
+               prompt,
+                                             upload_to_gemini(data['base64String'], mime_type="image/png"),
+                                         
+    ], stream=True)
+    print(response.text)
+    return response.text
 
 if __name__ == '__main__':
     app.run()
