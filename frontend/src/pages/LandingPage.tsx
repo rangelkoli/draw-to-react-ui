@@ -1,6 +1,29 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Cookies from "universal-cookie";
 const LandingPage = () => {
+  useEffect(() => {
+    (async () => {
+      const cookies = new Cookies();
+      const token = cookies.get("token");
+
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/user/", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        });
+
+        const data = response.data;
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
+
   return (
     <div className='w-screen overflow-x-hidden'>
       <div className='flex flex-col min-h-[100dvh] w-full'>

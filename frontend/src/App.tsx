@@ -4,11 +4,8 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { Tldraw, exportToBlob, useEditor } from "tldraw";
 import "tldraw/tldraw.css";
-
 import { blobToBase64 } from "file64";
-
 import axios from "axios";
-
 import Modal from "./components/Modal";
 import { useNavigate } from "react-router-dom";
 

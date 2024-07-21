@@ -8,6 +8,8 @@ import Res from "./pages/Res.tsx";
 import MyContext from "./utils/Context.ts";
 import LandingPage from "./pages/LandingPage.tsx";
 import Navbar from "./components/Navbar.tsx";
+import Signup from "./pages/Signup.tsx";
+import Login from "./pages/Login.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
   {
     path: "/:id",
     element: <Result />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(

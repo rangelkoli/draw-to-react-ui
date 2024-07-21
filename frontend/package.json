@@ -24,7 +24,8 @@
     "react-monaco-editor": "^0.55.0",
     "react-router-dom": "^6.24.1",
     "react-simple-code-editor": "^0.14.1",
-    "tldraw": "^2.3.0"
+    "tldraw": "^2.3.0",
+    "universal-cookie": "^7.2.0"
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.4",
