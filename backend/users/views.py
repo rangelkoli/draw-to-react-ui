@@ -71,14 +71,10 @@ class LoginView(APIView):
 class UserView(APIView):
     def get(self, request):
         token = request.headers.get('Authorization').split(' ')[1]
-        if not token:
-            return Response({"error": "Not authenticated"}, status=status.HTTP_401_UNAUTHORIZED)
-        
-        try:
-            payload = jwt.decode(token, "SECRET_KEY", algorithms=["HS256"])
-        except jwt.ExpiredSignatureError:
-            return Response({"error": "Token expired"}, status=status.HTTP_401_UNAUTHORIZED)
-        
+        print(token)
+        # if not token:
+        #     return Response({"error": "Not authenticated"}, status=status.HTTP_401_UNAUTHORIZED)
+        payload = jwt.decode(token, "SECRET_KEY", algorithms=["HS256"])
         user = User.objects.get(id=payload['id'])
         serializer = UserSerializer(user)
         return Response(serializer.data)

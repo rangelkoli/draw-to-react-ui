@@ -35,7 +35,11 @@ const Login = () => {
       console.log(res);
       if (res.status === 200) {
         const cookies = new Cookies();
-        cookies.set("jwt", res.data.jwt, { path: "/" });
+        cookies.set("jwt", res.data.jwt, {
+          path: "/",
+          expires: new Date(Date.now() + 604800000),
+        });
+
         navigate("/");
       } else {
         console.log("error");
