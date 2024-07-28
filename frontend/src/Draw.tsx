@@ -2,30 +2,38 @@ import React, { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { Tldraw, exportToBlob, useEditor } from "tldraw";
+import { Tldraw, exportToBlob, useEditor, exportAs } from "tldraw";
 import "tldraw/tldraw.css";
 import { blobToBase64 } from "file64";
 import axios from "axios";
 import Modal from "./components/Modal";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-function App() {
+import { RootState } from "./state/store";
+import { setCode } from "./state/codeSlice";
+
+function Draw() {
   const [text, setText] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   };
-  const history = useNavigate();
 
+  const user = useSelector((state: RootState) => state);
+
+  const history = useNavigate();
+  const dispatch = useDispatch();
   const [componentText, setComponentText] = useState("");
   async function sendDatatoGemini(base64String: string) {
     // TODO Make these files available on the local file system
     // You may need to update the file paths
     const data = axios.post(
-      "http://127.0.0.1:5000/generate_text",
+      "http://127.0.0.1:8000/api/draw/",
       {
         base64String,
         text,
+        user,
       },
       {
         headers: {
@@ -34,8 +42,8 @@ function App() {
       }
     );
     console.log(data.then((res) => console.log(res)));
-
     setComponentText((await data).data);
+    dispatch(setCode({ code: (await data).data }));
     history("/result", { state: { data: (await data).data } });
   }
 
@@ -64,9 +72,11 @@ function App() {
               format: "png",
               opts: { background: false },
             });
+
             const base64 = await blobToBase64(blob);
             console.log("asdsad", base64);
-            sendDatatoGemini(base64);
+
+            await sendDatatoGemini(base64);
           }}
         >
           Create UI
@@ -76,8 +86,8 @@ function App() {
   }
 
   return (
-    <div>
-      {componentText.length > 0 && (
+    <div className='flex justify-start items-start'>
+      {/* {componentText.length > 0 && (
         <div className='z-50 absolute top-0 left-0 w-full bg-background px-4 py-3 shadow-lg flex flex-row gap-5 bg-black bg-opacity-50 '>
           <Modal
             isOpen={componentText.length > 0}
@@ -87,15 +97,14 @@ function App() {
             text={componentText}
           />
         </div>
-      )}
+      )} */}
 
       <div
         style={{
-          position: "fixed",
+          position: "relative",
           inset: 0,
-          height: "90vh",
-          width: "100%",
-          zIndex: 0,
+          height: "80vh",
+          width: "100vw",
         }}
       >
         <Tldraw assetUrls={{}} persistenceKey='tldraw'>
@@ -106,4 +115,4 @@ function App() {
   );
 }
 
-export default App;
+export default Draw;

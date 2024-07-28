@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { store } from "../state/store.ts";
+import { setUser } from "../state/userSlice.ts";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -39,12 +41,13 @@ const Login = () => {
           path: "/",
           expires: new Date(Date.now() + 604800000),
         });
-
         navigate("/");
       } else {
         console.log("error");
       }
     });
+
+    console.log(store.getState());
   };
 
   return (

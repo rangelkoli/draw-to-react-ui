@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import parse from "html-react-parser";
 import "tailwindcss/tailwind.css"; // Import Tailwind CSS styles
 import Editor from "@monaco-editor/react";
+import { RootState } from "../state/store";
+import { useSelector } from "react-redux";
 
 const Result: React.FC = () => {
   const [code, setCode] = useState("");
+
+  const codeMain = useSelector((state: RootState) => state.code.code);
+  console.log("Code:", codeMain);
+
+  useEffect(() => {
+    setCode(codeMain.code);
+  }, [codeMain]);
 
   const [buttonPressed, setButtonPressed] = useState(0);
 
@@ -46,23 +55,23 @@ const Result: React.FC = () => {
         <div
           className={`${
             buttonPressed === 0
-              ? "w-1/2"
+              ? "w-full"
               : buttonPressed === 2
-              ? "hidden"
+              ? "w-4/6"
               : "w-1/4"
           }
           bg-slate-900`}
         >
           <div className='p-2 relative h-full overflow-y-auto'>
-            {parse(code)}
+            <div className='text-white text-lg font-mono'>{parse(code)}</div>
           </div>
         </div>
         <div
           className={`${
             buttonPressed === 0
-              ? "w-1/2"
-              : buttonPressed === 2
               ? "hidden"
+              : buttonPressed === 2
+              ? "w-2/6"
               : buttonPressed === 1
               ? "w-3/4"
               : "w-1/4"
@@ -72,6 +81,13 @@ const Result: React.FC = () => {
         >
           <Editor
             height='100%'
+            width={
+              buttonPressed === 1
+                ? "100%"
+                : buttonPressed === 3
+                ? "100%"
+                : "100%"
+            }
             defaultLanguage='html'
             defaultValue='// some comment'
             value={code}
