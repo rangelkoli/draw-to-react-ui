@@ -22,11 +22,11 @@ const Navbar = () => {
             <nav className='relative flex items-center justify-between h-14 lg:h-14'>
               <div className='hidden lg:flex lg:items-center lg:space-x-10'>
                 <a
-                  href='#'
+                  href='/draw'
                   title=''
                   className='text-base font-medium text-black'
                 >
-                  Features{" "}
+                  Draw{" "}
                 </a>
 
                 <a

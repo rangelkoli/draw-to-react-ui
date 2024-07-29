@@ -19,8 +19,7 @@ import binascii
 
 
 
-
-genai.configure(api_key="AIzaSyCwnhoIH4-hTkqKmiQKyvWVH5MP3-1CF4c")
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 model = genai.GenerativeModel(
     model_name="gemini-1.5-flash",
