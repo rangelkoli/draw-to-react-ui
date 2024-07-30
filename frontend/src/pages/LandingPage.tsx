@@ -4,154 +4,165 @@ import Cookies from "universal-cookie";
 const LandingPage = () => {
   return (
     <div className='w-screen overflow-x-hidden'>
-      <div className='flex flex-col min-h-[100dvh] w-full'>
-        <main className='flex-1'>
-          <section className='flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-28 mt-20'>
-            <a
-              href='#'
-              target='_blank'
-              rel='noreferrer'
-              className='border rounded-2xl py-1 px-4 text-slate-100 text-sm mb-5 hover:scale-105 transition duration-300 ease-in-out'
-            >
-              Inspired by the amazing
-              <span className='font-semibold'>restorePhotos</span> app
-            </a>
-            <h1 className='mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-slate-200 sm:text-7xl'>
-              Make your photos
-              <span className='relative whitespace-nowrap text-orange-400'>
-                <svg
-                  aria-hidden='true'
-                  viewBox='0 0 418 42'
-                  className='absolute top-2/3 left-0 h-[0.58em] w-full fill-orange-300/70'
-                  preserveAspectRatio='none'
-                >
-                  <path d='M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z'></path>
-                </svg>
-                <span className='relative'>Pop</span>
-              </span>
-            </h1>
-            <p className='mx-auto mt-12 max-w-xl text-lg text-slate-100 leading-7'>
-              Want to style up your photos? Maybe get that perfect LinkedIn
-              headshot? Let our AI do its magic and replace your background with
-              your color of choice. 100% free – pop your photos today.
-            </p>
-            <a
-              className='bg-black rounded-xl text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-black/80'
-              href='#'
-            >
-              Pop your photos →
-            </a>
-          </section>
-          <section className='w-full py-12 md:py-24 lg:py-32 bg-muted'>
-            <div className='container px-4 md:px-6'>
-              <div className='flex flex-col items-center justify-center space-y-4 text-center'>
-                <div className='space-y-2'>
-                  <div className='inline-block rounded-lg bg-muted px-3 py-1 text-sm'>
-                    Key Features
+      <div className='h-screen w-screen bg-black'>
+        <div className='mx-auto max-w-7xl pt-16 sm:pt-24'>
+          <div className='space-y-8 lg:space-y-0 lg:grid lg:grid-cols-12 lg:gap-8'>
+            <div className='px-6 sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:flex lg:items-center lg:text-left'>
+              <div className='space-y-8'>
+                <div className='space-y-4'>
+                  <div className='space-y-2'>
+                    <span className='rounded-full uppercase bg-pink-500 px-3 py-0.5 text-sm font-semibold leading-5 text-white'>
+                      WaitList
+                    </span>
+                    <h1 className='text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl'>
+                      <span className='sm:text-6xl flex-wrap text-wrap w-full'>
+                        Transform Your
+                      </span>
+                      <span className='font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-600 p-2'>
+                        Designs
+                      </span>
+                      into Responsive Code Instantly
+                    </h1>
                   </div>
-                  <h2 className='text-3xl font-bold tracking-tighter sm:text-5xl'>
-                    Streamline Your Shipping Process
-                  </h2>
-                  <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-                    Our beta shipping app offers a range of features to help you
-                    manage your logistics more efficiently, from real-time
-                    tracking to automated scheduling.
+
+                  <p className='text-base text-gray-200 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl'>
+                    Imagine a tool that bridges the gap between your creativity
+                    and the digital world. Our website effortlessly converts
+                    your drawings and designs into clean, responsive HTML and
+                    Tailwind CSS code. No more tedious coding or hiring
+                    expensive developers. Simply draw, upload, and watch your
+                    vision come to life in seconds. Perfect for designers,
+                    developers, and anyone looking to streamline their web
+                    development process.
                   </p>
                 </div>
-              </div>
-              <div className='mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12'>
-                <div className='flex flex-col justify-center space-y-4'>
-                  <ul className='grid gap-6'>
-                    <li>
-                      <div className='grid gap-1'>
-                        <h3 className='text-xl font-bold'>
-                          Real-Time Tracking
-                        </h3>
-                        <p className='text-muted-foreground'>
-                          Monitor the status of your shipments in real-time and
-                          receive alerts on any delays or issues.
-                        </p>
+
+                <div className='border-t border-gray-700'></div>
+
+                <div className='flex space-x-4 items-center text-white'>
+                  <div className='flex items-center space-x-2'>
+                    <div className='flex flex-shrink-0 -space-x-1'>
+                      <img
+                        loading='lazy'
+                        width='400'
+                        height='400'
+                        decoding='async'
+                        className='h-6 w-6 max-w-none rounded-full ring-2 ring-white'
+                        src='https://randomuser.me/api/portraits/men/29.jpg'
+                      />
+                      <img
+                        loading='lazy'
+                        width='400'
+                        height='400'
+                        decoding='async'
+                        className='h-6 w-6 max-w-none rounded-full ring-2 ring-white'
+                        src='https://randomuser.me/api/portraits/men/90.jpg'
+                      />
+                      <img
+                        loading='lazy'
+                        width='100'
+                        height='100'
+                        decoding='async'
+                        className='h-6 w-6 max-w-none rounded-full ring-2 ring-white'
+                        src='https://randomuser.me/api/portraits/men/75.jpg'
+                      />
+                      <img
+                        loading='lazy'
+                        width='200'
+                        height='200'
+                        decoding='async'
+                        className='h-6 w-6 max-w-none rounded-full ring-2 ring-white'
+                        src='https://randomuser.me/api/portraits/men/5.jpg'
+                      />
+                    </div>
+
+                    <span className='flex-shrink-0 text-xs font-medium leading-5'>
+                      +15
+                    </span>
+                  </div>
+
+                  <div className='h-4 border-l border-gray-700'></div>
+
+                  {/* <div className='flex items-center'>
+                    <svg
+                      className='h-4 w-4 fill-current text-yellow-500'
+                      viewBox='0 0 24 24'
+                    >
+                      <path d='M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z'></path>
+                    </svg>
+                    <svg
+                      className='h-4 w-4 fill-current text-yellow-500'
+                      viewBox='0 0 24 24'
+                    >
+                      <path d='M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z'></path>
+                    </svg>
+                    <svg
+                      className='h-4 w-4 fill-current text-yellow-500'
+                      viewBox='0 0 24 24'
+                    >
+                      <path d='M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z'></path>
+                    </svg>
+                    <svg
+                      className='h-4 w-4 fill-current text-yellow-500'
+                      viewBox='0 0 24 24'
+                    >
+                      <path d='M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z'></path>
+                    </svg>
+                    <svg
+                      className='h-4 w-4 fill-current text-yellow-500'
+                      viewBox='0 0 24 24'
+                    >
+                      <path d='M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z'></path>
+                    </svg>
+                  </div>
+                  <div className='h-4 border-l border-gray-700'></div>
+                  <a href='' target='_blank'>
+                    <img
+                      src='https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1&theme=light'
+                      className='w-32 h-8 md:w-48 md:h-12 lg:w-64 lg:h-16'
+                      width='250'
+                      height='54'
+                    />
+                  </a> */}
+                  <div className='  w-full flex justify-center items-center'>
+                    <div className='w-full mx-auto'>
+                      <label className='block text-sm font-medium text-gray-700 dark:text-gray-100'>
+                        Email
+                      </label>
+                      <div className='flex items-center mt-1'>
+                        <input
+                          type='email'
+                          id='input-9'
+                          className='w-full h-10 px-3 text-sm text-gray-700 border border-r-0 rounded-r-none border-blue-500 focus:outline-none rounded shadow-sm'
+                          placeholder='user@mail.com'
+                        />
+                        <button className='h-10 px-4 text-sm bg-blue-500 border border-l-0 border-blue-500 rounded-r shadow-sm text-blue-50 hover:text-white hover:bg-blue-400 hover:border-blue-400 focus:outline-none'>
+                          Subscribe
+                        </button>
                       </div>
-                    </li>
-                    <li>
-                      <div className='grid gap-1'>
-                        <h3 className='text-xl font-bold'>
-                          Automated Scheduling
-                        </h3>
-                        <p className='text-muted-foreground'>
-                          Streamline your shipping schedule with our automated
-                          tools, ensuring timely deliveries and reducing manual
-                          effort.
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className='grid gap-1'>
-                        <h3 className='text-xl font-bold'>
-                          Intelligent Routing
-                        </h3>
-                        <p className='text-muted-foreground'>
-                          Our app uses advanced algorithms to optimize your
-                          shipping routes, minimizing costs and transit times.
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
+                    </div>
+                  </div>
                 </div>
-                <img
-                  src='/placeholder.svg'
-                  width='550'
-                  height='310'
-                  alt='Features'
-                  className='mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last'
-                />
               </div>
             </div>
-          </section>
-          <section className='w-full py-12 md:py-24 lg:py-32 border-t'>
-            <div className='container grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10'>
-              <div className='space-y-3'>
-                <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
-                  Get Early Access to Our Beta App
-                </h2>
-                <p className='mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-                  Sign up now to be one of the first to try our innovative
-                  shipping solution and experience the benefits of streamlined
-                  logistics.
-                </p>
-              </div>
-              <div className='w-full max-w-sm space-y-2'>
-                <form className='flex gap-2'>
-                  <input
-                    type='email'
-                    placeholder='Enter your email'
-                    className='max-w-lg flex-1'
-                  />
-                  <button type='submit'>Get Early Access</button>
-                </form>
-                <p className='text-xs text-muted-foreground'>
-                  Sign up to be one of the first to try our beta app.{" "}
-                  <a href='#' className='underline underline-offset-2'>
-                    Terms &amp; Conditions
-                  </a>
-                </p>
+
+            <div className='flex items-center w-full col-span-6'>
+              <div className='px-6 h-96 lg:h-100% w-full max-w-2xl col-span-6 flex items-center mx-auto'>
+                <div className='w-full h-full'>
+                  <div className='w-full h-full'>
+                    <iframe
+                      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                      width='100%'
+                      height='100%'
+                      src='https://www.youtube.com/embed/mr15Xzb1Ook?autoplay=0&amp;mute=0&amp;controls=0&'
+                      id='widget2'
+                    ></iframe>
+                  </div>
+                </div>
               </div>
             </div>
-          </section>
-        </main>
-        <footer className='flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t'>
-          <p className='text-xs text-muted-foreground'>
-            &copy; 2024 Beta Shipping App. All rights reserved.
-          </p>
-          <nav className='sm:ml-auto flex gap-4 sm:gap-6'>
-            <a href='#' className='text-xs hover:underline underline-offset-4'>
-              Terms of Service
-            </a>
-            <a href='#' className='text-xs hover:underline underline-offset-4'>
-              Privacy
-            </a>
-          </nav>
-        </footer>
+          </div>
+        </div>
       </div>
     </div>
   );

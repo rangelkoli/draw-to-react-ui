@@ -3,6 +3,7 @@ import { AppDispatch } from "../state/store";
 import { useAppDispatch, useAppSelector } from "../state/hooks";
 import { RootState } from "../state/store";
 import { useSelector } from "react-redux";
+import { removeUser } from "../state/userSlice";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -95,7 +96,7 @@ const Navbar = () => {
                   />
                 </svg>
               </button>
-              {user ? (
+              {user.user ? (
                 <div className='hidden lg:flex lg:items-center lg:space-x-10'>
                   <a
                     href='#'
@@ -105,13 +106,13 @@ const Navbar = () => {
                     {" "}
                     Hello, {user.user.user.username}
                   </a>
-                  {/* <button
-                    className='text-base font-medium text-black'
+                  <button
+                    className='text-base font-medium text-black bg-white'
                     onClick={() => dispatch(removeUser())}
                   >
                     {" "}
                     Sign out{" "}
-                  </button> */}
+                  </button>
                 </div>
               ) : (
                 <div className='hidden lg:flex lg:items-center lg:space-x-10'>

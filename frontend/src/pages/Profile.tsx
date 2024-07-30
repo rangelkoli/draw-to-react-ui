@@ -13,6 +13,7 @@ const Profile = () => {
       <button class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg">share</button>
     </div>
   </div>`;
+
   return (
     <div>
       <div className='flex flex-wrap -mx-3 overflow-hidden justify-center items-center'>
