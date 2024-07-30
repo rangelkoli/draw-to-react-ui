@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -82,11 +82,11 @@ WSGI_APPLICATION = "backend.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        'HOST': 'aws-0-us-west-1.pooler.supabase.com',
+        'HOST': os.getenv("SUPABASE_HOST"),
         'NAME': 'postgres',
-        'USER': 'postgres.izagrrhjxsrtkxyemlue',
+        'USER': os.getenv("SUPABASE_USER"),
         'PORT': '6543',
-        'PASSWORD': 'This is sparta123',
+        'PASSWORD': os.getenv("SUPABASE_PASSWORD"),
     }
 }
 
